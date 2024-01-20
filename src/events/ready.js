@@ -9,5 +9,6 @@ export default class extends EventStructure {
 
     run = (interaction) => {
         console.log('Estou vivo!')
+        this.client.deployCommands()
     }
 }

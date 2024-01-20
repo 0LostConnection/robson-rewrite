@@ -7,7 +7,8 @@ export default class extends CommandStructure {
             description: 'Hello World!',
             disabled: false,
             deafult_member_permissions: null,
-            dm_permission: true
+            dm_permission: true,
+            testing: false
         })
     }
 

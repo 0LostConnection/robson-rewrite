@@ -7,5 +7,6 @@ export default class Command {
         this.options = options.options
         this.default_member_permissions = options.default_member_permissions
         this.dm_permission = options.dm_permission
+        this.testing = options.testing
     }
 }
