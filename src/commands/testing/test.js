@@ -5,10 +5,10 @@ export default class extends CommandStructure {
         super(client, {
             name: 'hello',
             description: 'Hello World!',
-            disabled: false,
             deafult_member_permissions: null,
             dm_permission: true,
-            testing: false
+            testing: true,
+            disabled: false
         })
     }
 
