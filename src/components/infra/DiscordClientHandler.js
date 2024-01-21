@@ -1,18 +1,24 @@
 import { Client, Collection, REST, Routes } from 'discord.js'
+import { createStream, table } from 'table'
+import colors from 'colors'
 import { readdirSync } from 'fs'
 
-function sendCommands(commands, options, type) {
+function sendCommands(client, commands, options, type) {
     (async () => {
+        const commandsNames = []
+        commands.forEach(element => {
+            commandsNames.push(element.name)
+        })
+
         const rest = new REST().setToken(process.env.BOT_TOKEN)
 
         try {
             await rest.put(options, {
                 body: commands
             })
-            console.log(`Registered ${commands.length} [/] ${type || ''} slash commands.`)
-
+            client.stream.write([`Commands - ${type}`.cyan.bold, `${commandsNames.join(', ')}`.yellow.italic])
         } catch (err) {
-            console.log(`Error registering [/] ${type || ''} slash commands.\n${err}`)
+            console.log(`Error registering [/] ${type || ''} slash commands.\n${err}`.red)
         }
     })()
 }
@@ -21,6 +27,16 @@ export default class extends Client {
     constructor(intents) {
         super(intents)
         this.commandsList = []
+        this.eventsList = []
+        this.stream = createStream({
+            columnDefault: {
+                width: 30
+            },
+            columnCount: 2,
+            columns: [
+                { alignment: 'center', }
+            ]
+        })
         this.listCommands()
         this.loadEvents()
     }
@@ -40,7 +56,7 @@ export default class extends Client {
                     options: command.options,
                 })
             }
-            sendCommands(testingCommandsToDeploy, Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.DEBUG_GUILD_ID), 'testing')
+            sendCommands(this, testingCommandsToDeploy, Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.DEBUG_GUILD_ID), 'Testing')
         }
 
         const commandsArray = this.commandsList.filter(command => command.testing === false).toJSON()
@@ -54,7 +70,7 @@ export default class extends Client {
                     options: command.options,
                 })
             }
-            sendCommands(commandsToDeploy, Routes.applicationCommands(process.env.CLIENT_ID), 'client')
+            sendCommands(this, commandsToDeploy, Routes.applicationCommands(process.env.CLIENT_ID), 'Client')
         }
     }
 
@@ -92,10 +108,19 @@ export default class extends Client {
             try {
                 const event = new (eventClass)(this)
                 if (event.disabled) continue
+                this.eventsList.push(event.name)
                 this.on(event.name, event.run)
             } catch (err) {
                 console.log(err)
             }
         }
+
+        console.log(table([['Events'.cyan.bold, `${this.eventsList.join(', ')}`.yellow.italic]], {
+            columnDefault:
+                { width: 30 },
+            columns: [
+                { alignment: 'center' }
+            ]
+        }))
     }
 }
