@@ -18,3 +18,6 @@ Rewriting [Robson Bot](https://github.com/0LostConnection/Robson-Bot) using ES6.
     ```bash
     node index.js
     ```
+
+## Todo
+- [ ] Implement database connectivity
