@@ -5,13 +5,16 @@ export default class extends CommandStructure {
         super(client, {
             name: 'hello',
             description: 'Hello World!',
-            deafult_member_permissions: null,
-            dm_permission: true,
+            permissions: null,
+            guildOnly: true,
             testing: true,
             disabled: false
         })
     }
 
+    /**
+    * @param {CommandInteraction} interaction
+    */
     run = (interaction) => {
         interaction.reply({ content: 'Hello World! :slight_smile:' })
     }

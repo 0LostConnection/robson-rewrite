@@ -13,9 +13,3 @@ const botInstance = new DiscordClientHandler({
 })
 
 botInstance.login(process.env.BOT_TOKEN)
-
-process.on('SIGINT', function () {
-    mongoose.connection.close()
-    console.log('Conexão com o MongoDB fechada devido ao encerramento do aplicativo')
-    process.exit(0)
-})

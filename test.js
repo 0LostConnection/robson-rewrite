@@ -10,10 +10,3 @@ const guild = await guildDB.guild(123)
 console.log(guild)
 
 guild.save()
-
-
-process.on('SIGINT', function () {
-    mongoose.connection.close()
-    console.log('Conexão com o MongoDB fechada devido ao encerramento do aplicativo');
-    process.exit(0)
-})
