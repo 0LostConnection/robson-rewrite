@@ -10,6 +10,10 @@ export default class extends CommandStructure {
             testing: true
         })
     }
+
+    /**
+    * @param {CommandInteraction} interaction
+    */
     run = (interaction) => {
         const botAuthor = interaction.client.users.cache.find(u => u.id == "437249534096048130")
         const author = {

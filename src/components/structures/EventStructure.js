@@ -1,4 +1,4 @@
-export default class Event {
+export default class EventStructure {
     constructor(client, options) {
         this.client = client,
         this.name = options.name

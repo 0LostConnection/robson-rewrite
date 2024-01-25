@@ -17,6 +17,7 @@ function sendCommands(client, commands, options, type) {
                 body: commands
             })
             client.stream.write([`Commands - ${type}`.cyan.bold, `${commandsNames.join(', ')}`.yellow.italic])
+            console.log('\n')
         } catch (err) {
             console.log(`Error registering [/] ${type || ''} slash commands.\n${err}`.red)
         }
