@@ -23,7 +23,8 @@ Rewriting [Robson Bot](https://github.com/0LostConnection/Robson-Bot) using ES6.
 ## Todo
 - [x] Implement database connectivity
 - [x] Create command that use database connectivity:
+- [x] Remove stream function on DiscordClientHander.js
 - [ ] Create dynamic setup command
-- [ ] Remove stream function from DiscordClientHander.js
 - [ ] Standardize log outups
 - [ ] Database: make logging optional
+- [ ] Comment everything :)

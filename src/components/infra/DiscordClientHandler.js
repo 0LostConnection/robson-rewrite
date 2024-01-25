@@ -1,5 +1,5 @@
 import { Client, Collection, REST, Routes } from 'discord.js'
-import { createStream, table } from 'table'
+import { table } from 'table'
 import colors from 'colors'
 import { readdirSync } from 'fs'
 
@@ -16,8 +16,14 @@ function sendCommands(client, commands, options, type) {
             await rest.put(options, {
                 body: commands
             })
-            client.stream.write([`Commands - ${type}`.cyan.bold, `${commandsNames.join(', ')}`.yellow.italic])
-            console.log('\n')
+
+            console.log(table([[`Commands - ${type}`.cyan.bold, `${commandsNames.join(', ')}`.yellow.italic]], {
+                columnDefault:
+                    { width: 30 },
+                columns: [
+                    { alignment: 'center' }
+                ]
+            }))
         } catch (err) {
             console.log(`Error registering [/] ${type || ''} slash commands.\n${err}`.red)
         }
@@ -29,15 +35,6 @@ export default class extends Client {
         super(intents)
         this.commandsList = []
         this.eventsList = []
-        this.stream = createStream({
-            columnDefault: {
-                width: 30
-            },
-            columnCount: 2,
-            columns: [
-                { alignment: 'center', }
-            ]
-        })
         this.listCommands()
         this.loadEvents()
     }
