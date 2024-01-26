@@ -1,4 +1,5 @@
 import EventStructure from "../components/structures/EventStructure.js"
+import { BaseInteraction } from 'discord.js'
 import colors from "colors"
 import { table } from 'table'
 
@@ -10,6 +11,9 @@ export default class extends EventStructure {
         })
     }
 
+    /**
+    * @param {BaseInteraction} interaction
+    */
     run = async (interaction) => {
         const config = {
             columns: [

@@ -6,7 +6,10 @@ export default class extends EventStructure {
             name: 'interactionCreate'
         })
     }
-
+    
+    /**
+    * @param {BaseInteraction} interaction
+    */
     run = (interaction) => {
         if (!interaction.isChatInputCommand()) return
 

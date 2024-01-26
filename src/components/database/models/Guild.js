@@ -4,11 +4,21 @@ const guildSchema = new Schema({
     _id: String,
     setup: {
         roles: {
-            staffRoleId: String,
-            adminRoleId: String,
-            modRoleId: String,
-            eventsModRoleId: String,
-            boostersRoleId: String,
+            staffRole: {
+                id: Number
+            },
+            adminRole: {
+                id: Number
+            },
+            modRole: {
+                id: Number
+            },
+            eventsModRole: {
+                id: Number
+            },
+            boostersRole: {
+                id: Number
+            },
         }
     }
 })

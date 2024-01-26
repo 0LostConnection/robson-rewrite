@@ -1,7 +1,6 @@
 import CommandStructure from '../../components/structures/CommandStructure.js'
 import GuildDB from '../../components/database/GuildDB.js'
 import { CommandInteraction } from 'discord.js'
-import mongoose from 'mongoose'
 import { EmbedBuilder } from '@discordjs/builders'
 
 export default class extends CommandStructure {
@@ -24,11 +23,11 @@ export default class extends CommandStructure {
         guildDB.connect()
         const guild = await guildDB.guild(interaction.guild.id)
 
-        guild.setup.roles.adminRoleId = '123'
-        guild.setup.roles.boostersRoleId = '123'
-        guild.setup.roles.eventsModRoleId = '123'
-        guild.setup.roles.modRoleId = '123'
-        guild.setup.roles.staffRoleId = '123'
+        guild.setup.roles.adminRole.id = '123'
+        guild.setup.roles.boostersRole.id = '123'
+        guild.setup.roles.eventsModRole.id = '123'
+        guild.setup.roles.modRole.id = '123'
+        guild.setup.roles.staffRole.id = '123'
 
         await guild.save()
         await guildDB.disconnect()
