@@ -68,7 +68,7 @@ export default class extends CommandStructure {
             const roleCollector = roleResponse.createMessageComponentCollector({ componentType: ComponentType.RoleSelect, time: 20000, filter: (i) => i.user.id === interaction.user.id })
 
             roleCollector.on('collect', async roleInteraction => {
-                roleInteraction.deferReply({ ephemeral: true })
+                await roleInteraction.deferReply({ ephemeral: true })
                 interaction.deleteReply()
 
                 const selectedRole = roleInteraction.values[0]
