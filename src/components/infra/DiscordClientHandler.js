@@ -1,7 +1,8 @@
 import { Client, Collection, REST, Routes } from 'discord.js'
+import { readdirSync } from 'fs'
 import { table } from 'table'
 import colors from 'colors'
-import { readdirSync } from 'fs'
+import log from './Log.js'
 
 function sendCommands(client, commands, options, type) {
     (async () => {
@@ -25,7 +26,7 @@ function sendCommands(client, commands, options, type) {
                 ]
             }))
         } catch (err) {
-            console.log(`Error registering [/] ${type || ''} slash commands.\n${err}`.red)
+            log({ title: `Startup: sendCommands: Error registering [/] ${type || ''} slash commands.`, message: err }, 'ERROR')
         }
     })()
 }
@@ -89,7 +90,7 @@ export default class extends Client {
                     if (command.disabled) continue
                     this.commandsList.set(command.name, command)
                 } catch (err) {
-                    console.log(err)
+                    log({ title: 'Startup: listCommands: Error listing commands.', message: err }, 'ERROR')
                 }
             }
         }
@@ -109,7 +110,7 @@ export default class extends Client {
                 this.eventsList.push(event.name)
                 this.on(event.name, event.run)
             } catch (err) {
-                console.log(err)
+                log({ title: 'Startup: loadEvents: Error loading events.', message: err }, 'ERROR')
             }
         }
 

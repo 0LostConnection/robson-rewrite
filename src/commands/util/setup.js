@@ -3,6 +3,7 @@ import { PermissionFlagsBits, CommandInteraction, ComponentType } from 'discord.
 import CommandStructure from '../../components/structures/CommandStructure.js'
 import Guilds from '../../components/database/models/Guild.js'
 import GuildDB from '../../components/database/GuildDB.js'
+import log from '../../components/infra/Log.js'
 
 const setupRoles = Object.keys(Guilds.schema.obj.setup.roles)
 
@@ -84,7 +85,7 @@ export default class extends CommandStructure {
                     roleInteraction.editReply({ embeds: [setupEmbed('Roles', '**Done!**')] })
                 } catch (err) {
                     roleInteraction.editReply({ embeds: [setupEmbed('Roles', '```ERROR - See logs```')] })
-                    console.log(err)
+                    log({ title: 'Command: Setup', message: err }, 'ERROR')
                 }
             })
         })

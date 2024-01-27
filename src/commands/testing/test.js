@@ -3,7 +3,7 @@ import CommandStructure from '../../components/structures/CommandStructure.js'
 export default class extends CommandStructure {
     constructor(client) {
         super(client, {
-            name: 'hello',
+            name: 'test',
             description: 'Hello World!',
             permissions: null,
             guildOnly: true,
