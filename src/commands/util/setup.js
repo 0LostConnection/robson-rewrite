@@ -3,7 +3,7 @@ import { PermissionFlagsBits, CommandInteraction, ComponentType } from 'discord.
 import CommandStructure from '../../core/structures/CommandStructure.js'
 import Guilds from '../../core/database/models/Guild.js'
 import GuildDB from '../../core/database/GuildDB.js'
-import log from '../../core/infra/Log.js'
+import log from '../../core/utils/Log.js'
 
 const setupRoles = Object.keys(Guilds.schema.obj.setup.roles)
 
