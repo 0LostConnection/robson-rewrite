@@ -1,6 +1,6 @@
-import CommandStructure from '../../components/structures/CommandStructure.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
 import { EmbedBuilder } from '@discordjs/builders'
-import hexToDecimal from '../../components/utils/hexToDecimal.js'
+import hexToDecimal from '../../core/utils/hexToDecimal.js'
 
 export default class extends CommandStructure {
     constructor(client) {

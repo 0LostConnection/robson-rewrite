@@ -1,5 +1,5 @@
-import CommandStructure from '../../components/structures/CommandStructure.js'
-import GuildDB from '../../components/database/GuildDB.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
+import GuildDB from '../../core/database/GuildDB.js'
 import { CommandInteraction } from 'discord.js'
 import { EmbedBuilder } from '@discordjs/builders'
 

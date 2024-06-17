@@ -1,4 +1,4 @@
-import EventStructure from "../components/structures/EventStructure.js"
+import EventStructure from "../core/structures/EventStructure.js"
 import { BaseInteraction } from 'discord.js'
 import colors from "colors"
 import { table } from 'table'

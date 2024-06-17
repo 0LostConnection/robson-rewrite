@@ -1,4 +1,4 @@
-import CommandStructure from '../../components/structures/CommandStructure.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
 
 export default class extends CommandStructure {
     constructor(client) {

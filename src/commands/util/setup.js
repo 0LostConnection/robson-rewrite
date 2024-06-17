@@ -1,9 +1,9 @@
 import { ActionRowBuilder, EmbedBuilder, RoleSelectMenuBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } from '@discordjs/builders'
 import { PermissionFlagsBits, CommandInteraction, ComponentType } from 'discord.js'
-import CommandStructure from '../../components/structures/CommandStructure.js'
-import Guilds from '../../components/database/models/Guild.js'
-import GuildDB from '../../components/database/GuildDB.js'
-import log from '../../components/infra/Log.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
+import Guilds from '../../core/database/models/Guild.js'
+import GuildDB from '../../core/database/GuildDB.js'
+import log from '../../core/infra/Log.js'
 
 const setupRoles = Object.keys(Guilds.schema.obj.setup.roles)
 
