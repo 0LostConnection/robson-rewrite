@@ -2,7 +2,7 @@ import EventStructure from "../core/structures/EventStructure.js"
 import { BaseInteraction } from 'discord.js'
 import colors from "colors"
 import { table } from 'table'
-import { consoleTable } from "../core/utils/LoggingUtils.js"
+import { consoleTable } from "../core/utils/loggingUtils.js"
 
 
 export default class extends EventStructure {

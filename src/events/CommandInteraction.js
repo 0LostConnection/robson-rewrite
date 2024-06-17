@@ -1,6 +1,6 @@
 import EventStructure from "../core/structures/EventStructure.js"
 import { BaseInteraction, CommandInteraction } from "discord.js"
-import { log } from '../core/utils/LoggingUtils.js'
+import { log } from '../core/utils/loggingUtils.js'
 
 export default class extends EventStructure {
     constructor(client) {

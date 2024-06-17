@@ -1,6 +1,6 @@
 import { Client, Collection, REST, Routes } from "discord.js";
 import { readdirSync } from "fs"
-import { log } from "../utils/LoggingUtils.js"
+import { log } from "../utils/loggingUtils.js"
 
 export default class extends Client {
     constructor(intents) {
