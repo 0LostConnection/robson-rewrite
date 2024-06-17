@@ -1,6 +1,6 @@
 import { Client, Collection, REST, Routes } from "discord.js";
 import { readdirSync } from "fs"
-import { log } from "../utils/loggingUtils.js"
+import { log } from "../utils/LoggingUtils.js"
 
 export default class extends Client {
     constructor(intents) {
@@ -73,7 +73,7 @@ export default class extends Client {
                     body: commands
                 })
 
-                log({ title: `Loaded Commands - ${route}`, message: `${commands.map(obj => `${obj.name}.js`).join(", ")}` }, "SUCCESS")
+                log({ title: `Loaded Commands - ${route}`, message: `${commands.map(obj => obj.name).join(", ")}` }, "SUCCESS")
             } catch (error) {
                 log({ title: `Startup: deployCommands: putCommands: An error occurred when putting the commands on ${route} route!`, message: error }, "ERROR")
             }
