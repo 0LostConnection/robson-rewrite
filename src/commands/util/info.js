@@ -7,7 +7,8 @@ export default class extends CommandStructure {
         super(client, {
             name: 'info',
             description: 'Informações sobre o bot!',
-            testing: true
+            debug: true,
+            disabled: true
         })
     }
 

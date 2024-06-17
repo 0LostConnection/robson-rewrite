@@ -26,5 +26,5 @@ export default ({ title, message }, level = 'INFO') => {
         'SUCCESS': ({ message, title }) => { return colors.green(`${title.bold}\n${message}\n`) },
     }
 
-    console.log((colorsMap[level] ?? colorsMap['INFO'])({ message, title }))
+    console.log((colorsMap[level] ?? colorsMap['INFO'])({ title, message }))
 }

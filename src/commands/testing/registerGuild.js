@@ -8,8 +8,9 @@ export default class extends CommandStructure {
         super(client, {
             name: 'register-guild',
             description: 'Register guild on database. (Demonstration purpose only)',
-            testing: true,
-            guildOnly: true
+            debug: true,
+            guildOnly: true,
+            disabled: true,
         })
     }
 

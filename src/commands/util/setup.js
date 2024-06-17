@@ -37,7 +37,8 @@ export default class extends CommandStructure {
             name: 'setup',
             description: 'Dynamic setup command based on database/models/Guild.js',
             permissions: String(PermissionFlagsBits.ManageGuild),
-            testing: true
+            debug: true,
+            disabled: true
         })
     }
 

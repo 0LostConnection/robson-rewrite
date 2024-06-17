@@ -15,7 +15,7 @@ export default class extends EventStructure {
     run = (interaction) => {
         if (!interaction.isChatInputCommand()) return
 
-        const command = this.client.commandsList.get(interaction.commandName)
+        const command = this.client.slashCommands.get(interaction.commandName)
 
         if (!command) return
 
