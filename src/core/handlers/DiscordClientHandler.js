@@ -1,6 +1,6 @@
 import { Client, Collection, REST, Routes } from "discord.js";
 import { readdirSync } from "fs"
-import log from '../utils/Log.js'
+import { log } from "../utils/LoggingUtils.js"
 
 export default class extends Client {
     constructor(intents) {
@@ -30,7 +30,7 @@ export default class extends Client {
 
                     this.slashCommands.set(command.name, command)
                 } catch (error) {
-                    return log({ title: "Startup: loadCommands: An error occurred when loading the commands!", message: error }, 'ERROR')
+                    return log({ title: "Startup: loadCommands: An error occurred when loading the commands!", message: error }, "ERROR")
 
                 }
             }
@@ -54,7 +54,7 @@ export default class extends Client {
                 this.events.set(event.name)
                 this.on(event.name, event.run)
             } catch (error) {
-                log({ title: "Startup: loadEvents: An error occurred when loading the events!", message: error }, 'ERROR')
+                log({ title: "Startup: loadEvents: An error occurred when loading the events!", message: error }, "ERROR")
             }
         }
     }
@@ -64,8 +64,8 @@ export default class extends Client {
             const rest = new REST().setToken(process.env.BOT_TOKEN)
 
             const validRoutes = {
-                'GUILD': Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.DEBUG_GUILD_ID),
-                'CLIENT': Routes.applicationCommands(process.env.CLIENT_ID)
+                "GUILD": Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.DEBUG_GUILD_ID),
+                "CLIENT": Routes.applicationCommands(process.env.CLIENT_ID)
             }
 
             try {
@@ -73,9 +73,9 @@ export default class extends Client {
                     body: commands
                 })
 
-                console.log(`Route: ${route} - ${commands.map(obj => obj.name).join(', ')}`)
+                log({ title: `Loaded Commands - ${route}`, message: `${commands.map(obj => `${obj.name}.js`).join(", ")}` }, "SUCCESS")
             } catch (error) {
-                log({ title: `Startup: deployCommands: putCommands: An error occurred when putting the commands on ${route} route!`, message: error }, 'ERROR')
+                log({ title: `Startup: deployCommands: putCommands: An error occurred when putting the commands on ${route} route!`, message: error }, "ERROR")
             }
         }
 
@@ -89,7 +89,7 @@ export default class extends Client {
                 debugCommandsToDeploy.push(debugCommandInfo)
             }
 
-            putCommands(debugCommandsToDeploy, 'GUILD')
+            putCommands(debugCommandsToDeploy, "GUILD")
         }
 
         const commandsArray = this.slashCommands.filter(command => command.debug === false).toJSON()
@@ -101,7 +101,7 @@ export default class extends Client {
                 commandsToDeploy.push(commandInfo)
             }
 
-            putCommands(commandsToDeploy, 'CLIENT')
+            putCommands(commandsToDeploy, "CLIENT")
         }
     }
 }
