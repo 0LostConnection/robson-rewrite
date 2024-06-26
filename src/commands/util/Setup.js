@@ -1,9 +1,9 @@
 import { ActionRowBuilder, EmbedBuilder, RoleSelectMenuBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder } from '@discordjs/builders'
 import { PermissionFlagsBits, CommandInteraction, ComponentType } from 'discord.js'
-import CommandStructure from '../../components/structures/CommandStructure.js'
-import Guilds from '../../components/database/models/Guild.js'
-import GuildDB from '../../components/database/GuildDB.js'
-import log from '../../components/infra/Log.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
+import Guilds from '../../core/database/models/Guild.js'
+import GuildDB from '../../core/database/GuildDB.js'
+import { log } from '../../core/utils/loggingUtils.js'
 
 const setupRoles = Object.keys(Guilds.schema.obj.setup.roles)
 
@@ -37,7 +37,8 @@ export default class extends CommandStructure {
             name: 'setup',
             description: 'Dynamic setup command based on database/models/Guild.js',
             permissions: String(PermissionFlagsBits.ManageGuild),
-            testing: true
+            debug: true,
+            disabled: true
         })
     }
 

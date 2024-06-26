@@ -1,5 +1,5 @@
-import CommandStructure from '../../components/structures/CommandStructure.js'
-import GuildDB from '../../components/database/GuildDB.js'
+import CommandStructure from '../../core/structures/CommandStructure.js'
+import GuildDB from '../../core/database/GuildDB.js'
 import { CommandInteraction } from 'discord.js'
 import { EmbedBuilder } from '@discordjs/builders'
 
@@ -8,8 +8,9 @@ export default class extends CommandStructure {
         super(client, {
             name: 'register-guild',
             description: 'Register guild on database. (Demonstration purpose only)',
-            testing: true,
-            guildOnly: true
+            debug: true,
+            guildOnly: true,
+            disabled: true,
         })
     }
 

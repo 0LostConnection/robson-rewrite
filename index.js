@@ -1,5 +1,5 @@
 import { GatewayIntentBits } from 'discord.js'
-import DiscordClientHandler from './src/components/infra/DiscordClientHandler.js'
+import DiscordClientHandler from './src/core/handlers/DiscordClientHandler.js'
 import 'dotenv/config'
 
 const botInstance = new DiscordClientHandler({

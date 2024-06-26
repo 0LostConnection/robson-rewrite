@@ -1,6 +1,6 @@
-import EventStructure from "../components/structures/EventStructure.js"
+import EventStructure from "../core/structures/EventStructure.js"
 import { BaseInteraction, CommandInteraction } from "discord.js"
-import log from "../components/infra/Log.js"
+import { log } from '../core/utils/loggingUtils.js'
 
 export default class extends EventStructure {
     constructor(client) {
@@ -15,7 +15,7 @@ export default class extends EventStructure {
     run = (interaction) => {
         if (!interaction.isChatInputCommand()) return
 
-        const command = this.client.commandsList.get(interaction.commandName)
+        const command = this.client.slashCommands.get(interaction.commandName)
 
         if (!command) return
 
