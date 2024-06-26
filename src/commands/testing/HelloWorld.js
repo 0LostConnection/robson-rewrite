@@ -1,4 +1,5 @@
 import CommandStructure from '../../core/structures/CommandStructure.js'
+import { CommandInteraction } from 'discord.js'
 
 export default class extends CommandStructure {
     constructor(client) {
